@@ -80,4 +80,15 @@ const TimeConvert = (num) => {
     : `${Math.floor(num / 60)}:${num % 60}`;
 };
 result = TimeConvert(372);
+
+const AlphabetSoup = (str) => {
+  return str
+    .split('')
+    .map(letter => letter.charCodeAt(0))
+    .sort((a,b) => a - b)
+    .map(char => String.fromCharCode(char))
+    .join('');
+}
+result = AlphabetSoup('coderbyte');
+
 console.log(result);
