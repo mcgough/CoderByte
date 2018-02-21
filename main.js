@@ -18,8 +18,12 @@ const LetterChanges = str => {
     .split('')
     .map(letter => (letter.charCodeAt(0) > 91 && letter.charCodeAt(0) < 123)
       ? String.fromCharCode(letter.charCodeAt(0) + 1)
-      : letter)
-    .map(letter => letter.match('a|e|i|o|u') ? letter.toUpperCase() : letter)
+      : letter
+    )
+    .map(letter => letter.match('a|e|i|o|u')
+      ? letter.toUpperCase()
+      : letter
+    )
     .join('');
 }
 result = LetterChanges('sentence');
@@ -38,4 +42,32 @@ const LetterCapitalize = str => {
 }
 result = LetterCapitalize('hello world');
 
+const SimpleSymbols = str => {
+  if (str.charCodeAt(0) > 92 && str.charCodeAt(0) < 133)
+    return false;
+  if (str.charCodeAt(str.length - 1) > 92 && str.charCodeAt(str.length - 1) < 133)
+    return false;
+  return str.split('+')
+    .reduce((bool, char) => {
+      if (char.length > 1) {
+        char.split('')
+          .forEach(letter => {
+            if (letter.charCodeAt(0) > 92 && letter.charCodeAt(0) < 133) {
+              bool = false;
+            }
+          })
+      }
+      return bool;
+    }, true)
+}
+result = SimpleSymbols("F+f+d+f");
+
+const CheckNums = (num1, num2) => {
+  return num1 === num2 
+    ? "-1" 
+    : num1 < num2 
+      ? true 
+      : false;
+}
+result = CheckNums(100, 1)
 console.log(result);
