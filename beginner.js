@@ -29,14 +29,16 @@ const LetterChanges = str => {
 result = LetterChanges('sentence');
 
 const SimpleAdding = num => { 
-  return [...Array(num).keys()].reduce((sum, el) => {
-    return sum += (el + 1)
-  }, 0)     
+  return [...Array(num).keys()]
+    .reduce((sum, el) => {
+      return sum += (el + 1)
+    }, 0);
 }
 result = SimpleAdding(5);
 
 const LetterCapitalize = str => { 
-  return str.split(' ')
+  return str
+    .split(' ')
     .map(word => word[0].toUpperCase() + word.slice(1, word.length))
     .join(' ');
 }
@@ -47,7 +49,8 @@ const SimpleSymbols = str => {
     return false;
   if (str.charCodeAt(str.length - 1) > 92 && str.charCodeAt(str.length - 1) < 133)
     return false;
-  return str.split('+')
+  return str
+    .split('+')
     .reduce((bool, char) => {
       if (char.length > 1) {
         char.split('')
@@ -69,5 +72,12 @@ const CheckNums = (num1, num2) => {
       ? true 
       : false;
 }
-result = CheckNums(100, 1)
+result = CheckNums(100, 1);
+
+const TimeConvert = (num) => {
+  return Math.floor(num / 60) < 1 
+    ? `0:${num}`
+    : `${Math.floor(num / 60)}:${num % 60}`;
+};
+result = TimeConvert(372);
 console.log(result);
